@@ -1,5 +1,5 @@
 /**
- * placeholder.js
+ * jquery.placeholder.js
  *
  * @version v0.1
  * @author Mato Ilic info@matoilic.ch
@@ -11,6 +11,8 @@
  */
  
 ;(function($, doc, debug) {
+    var selector = ':input[placeholder]';
+    
     //skip if there is native browser support for the placeholder attribute
     if(!debug && ('placeholder' in doc.createElement('input'))) return;
     
@@ -28,29 +30,40 @@
         return ((val == placeHolder) ? '' : val);
     };
     
+    function onBlur() {
+        var target = $(this);
+        if($.trim(target.realVal()).length == 0) {
+            target.realVal(target.attr('placeholder'));
+            target.addClass('placeholder');
+        }
+    }
+    
+    function onFocus() {
+        var target = $(this);
+        if(target.realVal() == target.attr('placeholder')) {
+            target.realVal('');
+            target.removeClass('placeholder');
+        }
+    }
+    
+    function onSubmit() {
+        $(this).find(selector).each(function() {
+            var target = $(this);
+            if(target.realVal() == target.attr('placeholder')) {
+                target.realVal('');
+            }
+        });
+    }
+    
+    $.fn.placeholder = function() {
+        this.blur();
+    };
+    
     jQuery(function($) {
-       $('[placeholder]').focus(function() {
-           var target = $(this);
-       
-           if(target.realVal() == target.attr('placeholder')) {
-               target.realVal('');
-               target.removeClass('placeholder');
-           }
-       }).blur(function() {
-           var target = $(this);
-           if($.trim(target.realVal()).length == 0) {
-               target.realVal(target.attr('placeholder'));
-               target.addClass('placeholder');
-           }
-       }).blur();
-   
-       $('form').submit(function() {
-           $(this).find('[placeholder]').each(function() {
-               var target = $(this);
-               if(target.realVal() == target.attr('placeholder')) {
-                   target.realVal('');
-               }
-           });
-       }); 
+        $body = $(doc.body);
+        $body.delegate('form', 'submit', onSubmit);
+        $body.delegate(selector, 'focus', onFocus);
+        $body.delegate(selector, 'blur', onBlur);
+        $(selector).placeholder();
     });
 })(jQuery, document, window.debug);
