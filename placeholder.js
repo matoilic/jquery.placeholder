@@ -9,10 +9,10 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  */
-
-;(function($, doc) {
+ 
+;(function($, doc, debug) {
     //skip if there is native browser support for the placeholder attribute
-    if('placeholder' in doc.createElement('input')) return;
+    if(!debug && ('placeholder' in doc.createElement('input'))) return;
     
     /* patch jQuery.fn.val to return an empty value if the value matches 
      * the placeholder
@@ -53,4 +53,4 @@
            });
        }); 
     });
-})(jQuery, document);
+})(jQuery, document, window.debug);
