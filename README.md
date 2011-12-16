@@ -13,5 +13,6 @@ jquery.placeholder.js is a small [jQuery](http://jquery.com)-based pollyfill for
 Copyright &copy; 2011 Mato Ilic <<info@matoilic.ch>>
 
 jquery.placeholder.js is dual licensed under the MIT and GPL licenses:
+
 * http://www.opensource.org/licenses/mit-license.php 
 * http://www.gnu.org/licenses/gpl.html
