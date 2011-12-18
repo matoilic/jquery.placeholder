@@ -1,0 +1,19 @@
+{
+  "author": "Mato Ilic",
+  "name": "jquery.placeholder",
+  "description": "A polyfill for the placeholder attribute, that also patches $.fn.val properly",
+  "version": "0.1.1",
+  "homepage": "https://github.com/matoilic/jquery.placeholder",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matoilic/jquery.placeholder.git"
+  },
+  "main": "jquery.placeholder.js",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "jquery": "*"
+  },
+  "devDependencies": {}
+}

@@ -1,6 +1,10 @@
-# jquery.placeholder.js #
+# jquery.placeholder #
 
-jquery.placeholder.js is a small [jQuery](http://jquery.com)-based pollyfill for the HTML5 placeholder attribute. Just include the script and it takes care of everything. It also patches jQuery's $.fn.val function to return an empty value if the actual value matches the placeholder.
+jquery.placeholder is a small [jQuery](http://jquery.com)-based pollyfill for the HTML5 placeholder attribute.
+
+## Usage ##
+
+Just include the script and it takes care of everything. It also patches jQuery's `$.fn.val` function to return an empty value if the actual value matches the placeholder. If you add form fields dynamically to your form just call the `placeholder` function on your element, e.g. `$('input').placeholder()`, to initialize the plugin.
 
 ## Version History ##
 
@@ -8,11 +12,15 @@ jquery.placeholder.js is a small [jQuery](http://jquery.com)-based pollyfill for
 
 * initial release
 
+**0.1.1**
+
+* define an empty `$.fn.placeholder` function if native browser support is available
+
 ## Licence ##
 
 Copyright &copy; 2011 Mato Ilic <<info@matoilic.ch>>
 
-jquery.placeholder.js is dual licensed under the MIT and GPL licenses:
+jquery.placeholder is dual licensed under the MIT and GPL licenses:
 
 * http://www.opensource.org/licenses/mit-license.php 
 * http://www.gnu.org/licenses/gpl.html

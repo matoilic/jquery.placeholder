@@ -1,7 +1,7 @@
 /**
- * jquery.placeholder.js
+ * jquery.placeholder
  *
- * @version v0.1.0
+ * @version v0.1.1
  * @author Mato Ilic info@matoilic.ch
  * @copyright 2011 Mato Ilic
  *
@@ -28,9 +28,9 @@
         if(arguments.length > 0) return $element.realVal.apply(this, arguments);
         
         val = $element.realVal();
-        placeHolder = $element.attr('placeholder');
+        placeholder = $element.attr('placeholder');
         
-        return ((val == placeHolder) ? '' : val);
+        return ((val == placeholder) ? '' : val);
     };
     
     function onBlur() {

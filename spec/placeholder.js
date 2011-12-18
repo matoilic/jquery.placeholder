@@ -1,4 +1,4 @@
-describe("placeholder", function() {
+describe("jquery.placeholder", function() {
     var placeholder = 'foo bar', $element;
     
     beforeEach(function() {
