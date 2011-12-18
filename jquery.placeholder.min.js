@@ -2,7 +2,7 @@
  * jquery.placeholder
  *
  * @version v0.1.1
- * @author Mato Ilic info@matoilic.ch
+ * @author Mato Ilic <info@matoilic.ch>
  * @copyright 2011 Mato Ilic
  *
  * Dual licensed under the MIT and GPL licenses:
