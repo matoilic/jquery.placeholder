@@ -1,7 +1,7 @@
 /**
  * jquery.placeholder.js
  *
- * @version v0.1
+ * @version v0.1.0
  * @author Mato Ilic info@matoilic.ch
  * @copyright 2011 Mato Ilic
  *
@@ -14,7 +14,10 @@
     var selector = ':input[placeholder]';
     
     //skip if there is native browser support for the placeholder attribute
-    if(!debug && ('placeholder' in doc.createElement('input'))) return;
+    if(!debug && ('placeholder' in doc.createElement('input'))) {
+        $.fn.placeholder = function() {};
+        return;
+    }
     
     /* patch jQuery.fn.val to return an empty value if the value matches 
      * the placeholder
