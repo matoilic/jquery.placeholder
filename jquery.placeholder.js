@@ -63,10 +63,10 @@
     };
     
     jQuery(function($) {
-        $body = $(doc.body);
-        $body.delegate('form', 'submit', onSubmit);
-        $body.delegate(selector, 'focus', onFocus);
-        $body.delegate(selector, 'blur', onBlur);
+        var $doc = $(doc);
+        $doc.delegate('form', 'submit', onSubmit);
+        $doc.delegate(selector, 'focus', onFocus);
+        $doc.delegate(selector, 'blur', onBlur);
         $(selector).placeholder();
     });
 })(jQuery, document, window.debug);
