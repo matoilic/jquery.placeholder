@@ -59,10 +59,10 @@
     }
     
     $.fn.placeholder = function() {
-        this.blur();
+        return this.blur();
     };
     
-    jQuery(function($) {
+    $(function($) {
         var $doc = $(doc);
         $doc.delegate('form', 'submit', onSubmit);
         $doc.delegate(selector, 'focus', onFocus);
