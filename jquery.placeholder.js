@@ -1,7 +1,7 @@
 /**
  * jquery.placeholder https://github.com/matoilic/jquery.placeholder
  *
- * @version v0.2
+ * @version v0.2.1
  * @author Mato Ilic <info@matoilic.ch>
  * @copyright 2012 Mato Ilic
  *

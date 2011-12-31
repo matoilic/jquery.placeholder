@@ -20,9 +20,13 @@ Just include the script and it takes care of everything. It also patches jQuery'
 
 * improved handling of password fields
 
+**0.2.1**
+
+* it doesn't drop and recreate password fields so that long time references don't break
+
 ## Licence ##
 
-Copyright &copy; 2011 Mato Ilic <<info@matoilic.ch>>
+Copyright &copy; 2012 Mato Ilic <<info@matoilic.ch>>
 
 jquery.placeholder is dual licensed under the MIT and GPL licenses:
 
