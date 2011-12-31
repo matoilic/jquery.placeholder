@@ -2,10 +2,9 @@ describe("jquery.placeholder", function() {
     var placeholder = 'foo bar', $element;
     
     function init(type) {
-        $('form').html('<input id="field" type="' + type + '" placeholder="' + placeholder + '">');
+        $('form').html('<label for="field">L</label><input id="field" type="' + type + '" placeholder="' + placeholder + '">');
         $element = $('#field');
         $element.placeholder();
-        $element = $('#field'); //requird since pw fields are destroyed and recreated
     }
     
     beforeEach(function() {
@@ -47,12 +46,19 @@ describe("jquery.placeholder", function() {
     
     it("changes password fields to text fields", function() {
         init('password');
-        expect($('#field').data('password')).toBeTruthy();
+        expect($('#field').prev().data('password')).toBeTruthy();
     });
     
     it("restores password fields", function() {
         init('password');
-        $element.focus();
-        expect($('#field').attr('type')).toEqual('password');
+        $element.prev().focus();
+        expect($element.prev('input').length).toEqual(0);
+    });
+    
+    it("adjusts the label for password fields", function() {
+       init('password');
+       expect($('label[for=field-clone]').length).toEqual(1);
+       $element.prev().focus();
+       expect($('label[for=field]').length).toEqual(1);
     });
 });

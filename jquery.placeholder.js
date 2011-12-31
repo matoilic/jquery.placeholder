@@ -34,17 +34,20 @@
     };
     
     function onBlur() {
-        var $target = $(this), $clone, plceholder, hasVal;
+        var $target = $(this), $clone, plceholder, hasVal, cid;
         placeholder = $target.attr('placeholder');
 
         if($.trim($target.val()).length > 0) return;
         
         if($target.is(':password')) {
+            cid = $target.attr('id') + '-clone';
+            
             $clone = $target.clone()
-                            .attr({type: 'text', value: placeholder, 'data-password': 1})
+                            .attr({type: 'text', value: placeholder, 'data-password': 1, id: cid})
                             .addClass('placeholder');
                             
-            $target.before($clone).remove();
+            $target.before($clone).hide();
+            $('label[for=' + $target.attr('id') + ']').attr('for', cid);
         } else {
             $target.val(placeholder);
             $target.addClass('placeholder');
@@ -52,17 +55,14 @@
     }
     
     function onFocus() {
-        var $target = $(this), $clone;
+        var $target = $(this), $clone, $orig;
         
         if($target.is(':password')) return;
         
         if($target.data('password')) {
-            $clone = $target.clone()
-                            .attr({type: 'password', value: '', 'data-password': ''})
-                            .addClass('placeholder');
-                            
-            $target.before($clone).remove();
-            $clone.focus();
+            $orig = $target.next().show().focus();
+            $('label[for=' + $target.attr('id') + ']').attr('for', $orig.attr('id'));
+            $target.remove();
         } else if($target.realVal() == $target.attr('placeholder')) {
             $target.val('');
             $target.removeClass('placeholder');
