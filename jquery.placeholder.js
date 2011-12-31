@@ -1,9 +1,9 @@
 /**
  * jquery.placeholder https://github.com/matoilic/jquery.placeholder
  *
- * @version v0.1.1
+ * @version v0.2
  * @author Mato Ilic <info@matoilic.ch>
- * @copyright 2011 Mato Ilic
+ * @copyright 2012 Mato Ilic
  *
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php

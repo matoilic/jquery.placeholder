@@ -16,6 +16,10 @@ Just include the script and it takes care of everything. It also patches jQuery'
 
 * define an empty `$.fn.placeholder` function if native browser support is available
 
+**0.2**
+
+* improved handling of password fields
+
 ## Licence ##
 
 Copyright &copy; 2011 Mato Ilic <<info@matoilic.ch>>
