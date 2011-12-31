@@ -1,10 +1,15 @@
 describe("jquery.placeholder", function() {
     var placeholder = 'foo bar', $element;
     
-    beforeEach(function() {
-		$('form').html('<input id="field" type="text" placeholder="' + placeholder + '">')
+    function init(type) {
+        $('form').html('<input id="field" type="' + type + '" placeholder="' + placeholder + '">');
         $element = $('#field');
         $element.placeholder();
+        $element = $('#field'); //requird since pw fields are destroyed and recreated
+    }
+    
+    beforeEach(function() {
+		init('text');
     });
     
     it("patches jQuery's val properly", function() {
@@ -38,5 +43,16 @@ describe("jquery.placeholder", function() {
         var $form = $('form');
         $form.submit(function(e) { e.preventDefault(); }).submit();
         expect($element.realVal()).toEqual('');
+    });
+    
+    it("changes password fields to text fields", function() {
+        init('password');
+        expect($('#field').data('password')).toBeTruthy();
+    });
+    
+    it("restores password fields", function() {
+        init('password');
+        $element.focus();
+        expect($('#field').attr('type')).toEqual('password');
     });
 });

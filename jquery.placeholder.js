@@ -14,7 +14,7 @@
     var selector = ':input[placeholder]';
     
     //skip if there is native browser support for the placeholder attribute
-    if(!debug && ('placeholder' in doc.createElement('input'))) {
+    if(!debug && ('placeholder' in doc.createElement('input')) && ('placeholder' in doc.createElement('textarea'))) {
         $.fn.placeholder = function() {};
         return;
     }
@@ -34,26 +34,46 @@
     };
     
     function onBlur() {
-        var target = $(this);
-        if($.trim(target.realVal()).length == 0) {
-            target.realVal(target.attr('placeholder'));
-            target.addClass('placeholder');
+        var $target = $(this), $clone, plceholder, hasVal;
+        placeholder = $target.attr('placeholder');
+
+        if($.trim($target.val()).length > 0) return;
+        
+        if($target.is(':password')) {
+            $clone = $target.clone()
+                            .attr({type: 'text', value: placeholder, 'data-password': 1})
+                            .addClass('placeholder');
+                            
+            $target.before($clone).remove();
+        } else {
+            $target.val(placeholder);
+            $target.addClass('placeholder');
         }
     }
     
     function onFocus() {
-        var target = $(this);
-        if(target.realVal() == target.attr('placeholder')) {
-            target.realVal('');
-            target.removeClass('placeholder');
+        var $target = $(this), $clone;
+        
+        if($target.is(':password')) return;
+        
+        if($target.data('password')) {
+            $clone = $target.clone()
+                            .attr({type: 'password', value: '', 'data-password': ''})
+                            .addClass('placeholder');
+                            
+            $target.before($clone).remove();
+            $clone.focus();
+        } else if($target.realVal() == $target.attr('placeholder')) {
+            $target.val('');
+            $target.removeClass('placeholder');
         }
     }
     
     function onSubmit() {
         $(this).find(selector).each(function() {
-            var target = $(this);
-            if(target.realVal() == target.attr('placeholder')) {
-                target.realVal('');
+            var $target = $(this);
+            if($target.realVal() == $target.attr('placeholder')) {
+                $target.val('');
             }
         });
     }
