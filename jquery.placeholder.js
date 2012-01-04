@@ -9,16 +9,24 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  */
- 
 ;(function($, doc, debug) {
-    var selector = ':input[placeholder]';
+    var input = ('placeholder' in doc.createElement('input')), 
+        textarea = ('placeholder' in doc.createElement('textarea')), 
+        selector = ':input[placeholder]';
+    
+    $.fn.placeholder = function() {};
+    $.fn.placeholder.input = input;
+    $.fn.placeholder.textarea = textarea;
     
     //skip if there is native browser support for the placeholder attribute
-    if(!debug && ('placeholder' in doc.createElement('input')) && ('placeholder' in doc.createElement('textarea'))) {
-        $.fn.placeholder = function() {};
+    if(!debug && input && textarea) {
         return;
     }
     
+    if(!debug && input && !textarea) {
+        selector = 'textarea[placeholder]';
+    }
+
     /* patch jQuery.fn.val to return an empty value if the value matches 
      * the placeholder
      */
@@ -33,28 +41,21 @@
         return ((val == placeholder) ? '' : val);
     };
     
-    function onBlur() {
-        var $target = $(this), $clone, plceholder, hasVal, cid;
-        placeholder = $target.attr('placeholder');
-
-        if($.trim($target.val()).length > 0) return;
-        
-        if($target.is(':password')) {
-            cid = $target.attr('id') + '-clone';
-            
-            $clone = $target.clone()
-                            .attr({type: 'text', value: placeholder, 'data-password': 1, id: cid})
-                            .addClass('placeholder');
-                            
-            $target.before($clone).hide();
-            $('label[for=' + $target.attr('id') + ']').attr('for', cid);
-        } else {
-            $target.val(placeholder);
-            $target.addClass('placeholder');
-        }
+    function clearForm() {
+        $(this).find(selector).each(removePlaceholder);
     }
     
-    function onFocus() {
+    function extractAttributes(elem) {
+        var attr = elem.attributes, copy = {}, skip = /^jQuery\d+/;
+        for(var i = 0; i < attr.length; i++) {
+            if(attr[i].specified && !skip.test(attr[i].name)) {
+                copy[attr[i].name] = attr[i].value;
+            }
+        }
+        return copy;
+    }
+    
+    function removePlaceholder() {
         var $target = $(this), $clone, $orig;
         
         if($target.is(':password')) return;
@@ -69,24 +70,36 @@
         }
     }
     
-    function onSubmit() {
-        $(this).find(selector).each(function() {
-            var $target = $(this);
-            if($target.realVal() == $target.attr('placeholder')) {
-                $target.val('');
-            }
-        });
+    function setPlaceholder() {
+        var $target = $(this), $clone, plceholder, hasVal, cid;
+        placeholder = $target.attr('placeholder');
+
+        if($.trim($target.val()).length > 0) return;
+        
+        if($target.is(':password')) {
+            cid = $target.attr('id') + '-clone';
+            $clone = $('<input/>')
+                        .attr($.extend(extractAttributes(this), {type: 'text', value: placeholder, 'data-password': 1, id: cid}))
+                        .addClass('placeholder');
+
+            $target.before($clone).hide();
+            $('label[for=' + $target.attr('id') + ']').attr('for', cid);
+        } else {
+            $target.val(placeholder);
+            $target.addClass('placeholder');
+        }
     }
     
     $.fn.placeholder = function() {
-        return this.blur();
+        this.filter(selector).each(setPlaceholder);
+        return this;
     };
     
     $(function($) {
         var $doc = $(doc);
-        $doc.delegate('form', 'submit', onSubmit);
-        $doc.delegate(selector, 'focus', onFocus);
-        $doc.delegate(selector, 'blur', onBlur);
+        $doc.delegate('form', 'submit', clearForm);
+        $doc.delegate(selector, 'focus', removePlaceholder);
+        $doc.delegate(selector, 'blur', setPlaceholder);
         $(selector).placeholder();
     });
 })(jQuery, document, window.debug);
