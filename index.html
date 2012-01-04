@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery Placeholder</title>
+    <link href="demo/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <a href="https://github.com/matoilic/jquery.placeholder" class="fork"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <div id="wrapper">
+        <div class="download">
+            <a href="https://github.com/matoilic/jquery.placeholder/zipball/master" title="Download as zip">
+                <img border="0" width="60" src="https://github.com/images/modules/download/zip.png">
+            </a>
+            <a href="https://github.com/matoilic/jquery.placeholder/tarball/master" title="Download as tar.gz">
+                <img border="0" width="60" src="https://github.com/images/modules/download/tar.png">
+            </a>
+        </div>
+        <h1>jQuery Placeholder Polyfill</h1>
+        <section id="sample1">
+            <h2>Example</h2>
+            <p>
+                <label for="text">Text Field:</label><br>
+                <input type="text" id="text" placeholder="Enter some text">
+            </p>
+            <p>
+                <label for="password">Password Field:</label><br>
+                <input id="password" type="password" placeholder="Enter a password">
+            </p>
+            <p>
+                <label for="textarea">Textarea:</label><br>
+                <textarea id="textarea" placeholder="Enter a long text"></textarea>
+            </p>
+            <p id="hint"><strong>Plugin not active since your browser has native support for the placeholder attribute.</strong></p>
+        </section>
+        <section id="download">
+            <h2>Download</h2>
+            <p>
+                You can download this project in either
+                <a href="https://github.com/matoilic/jquery.placeholder/zipball/master">zip</a> or
+                <a href="https://github.com/matoilic/jquery.placeholder/tarball/master">tar</a> formats.
+            </p>
+            <p>
+                You can also clone the project with <a href="http://git-scm.com">Git</a> by running:
+                <code>$ git clone git://github.com/matoilic/jquery.placeholder</code>
+            </p>
+        </section>
+        <section id="licence">
+            <h2>Licence</h2>
+            <p>Copyright &copy; 2012 Mato Ilic</p>
+            <p>jquery.placeholder is dual licensed under the MIT and GPL licenses:</p>
+            <p>
+                <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a><br>
+                <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>
+            </p>
+        </section>
+    </div>
+    <script src="vendor/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="jquery.placeholder.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        jQuery(function($) {
+            if(!$.placeholder.input || !$.placeholder.textarea) {
+                $('#hint').hide();
+            }
+        });
+    </script>
+</body>
+</html>
