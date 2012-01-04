@@ -1,7 +1,7 @@
 /**
  * jquery.placeholder https://github.com/matoilic/jquery.placeholder
  *
- * @version v0.2.2
+ * @version v0.2.3
  * @author Mato Ilic <info@matoilic.ch>
  * @copyright 2012 Mato Ilic
  *
@@ -14,12 +14,11 @@
         textarea = ('placeholder' in doc.createElement('textarea')), 
         selector = ':input[placeholder]';
     
-    $.fn.placeholder = function() {};
-    $.fn.placeholder.input = input;
-    $.fn.placeholder.textarea = textarea;
+    $.placeholder = {input: input, textarea: textarea};
     
     //skip if there is native browser support for the placeholder attribute
     if(!debug && input && textarea) {
+        $.fn.placeholder = function() {};
         return;
     }
     

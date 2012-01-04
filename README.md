@@ -35,6 +35,10 @@ It supports all browsers that do not have native support for the placeholder att
 * fixes IE6 support
 * `$.placeholder.input` and `$.placeholder.textarea` to inidcate if the browser has native placeholder support for the two elements
 
+**0.2.3**
+
+* fixes `$.placeholder.input` and `$.placeholder.textarea`
+
 ## Licence ##
 
 Copyright &copy; 2012 Mato Ilic <<info@matoilic.ch>>
