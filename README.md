@@ -8,6 +8,8 @@ Just include the script and it takes care of everything. It also patches jQuery'
 
 `$.placeholder.input` and `$.placeholder.textarea` inidcate if the browser has native placeholder support for the two elements.
 
+Demo: http://matoilic.github.com/jquery.placeholder
+
 ## Browser support ##
 
 It supports all browsers that do not have native support for the placeholder attribute. Or at least I have not found one where it does not work :).
