@@ -41,9 +41,13 @@ It supports all browsers that do not have native support for the placeholder att
 
 * fixes `$.placeholder.input` and `$.placeholder.textarea`
 
+**0.2.4**
+
+* jQuery 1.9 compatibility
+
 ## Licence ##
 
-Copyright &copy; 2012 Mato Ilic <<info@matoilic.ch>>
+Copyright &copy; 2013 Mato Ilic <<info@matoilic.ch>>
 
 jquery.placeholder is dual licensed under the MIT and GPL licenses:
 

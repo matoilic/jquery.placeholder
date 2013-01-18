@@ -1,9 +1,9 @@
 /**
  * jquery.placeholder http://matoilic.github.com/jquery.placeholder
  *
- * @version v0.2.3
+ * @version v0.2.4
  * @author Mato Ilic <info@matoilic.ch>
- * @copyright 2012 Mato Ilic
+ * @copyright 2013 Mato Ilic
  *
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
@@ -96,9 +96,9 @@
     
     $(function($) {
         var $doc = $(doc);
-        $doc.delegate('form', 'submit', clearForm);
-        $doc.delegate(selector, 'focus', removePlaceholder);
-        $doc.delegate(selector, 'blur', setPlaceholder);
+        $doc.on('submit', 'form', clearForm);
+        $doc.on('focus', selector, removePlaceholder);
+        $doc.on('blur', selector, setPlaceholder);
         $(selector).placeholder();
     });
 })(jQuery, document, window.debug);
