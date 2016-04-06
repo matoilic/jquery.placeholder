@@ -1,0 +1,15 @@
+{
+  "name": "jquery.placeholder",
+  "author": {
+    "name": "Mato Ilic",
+    "url": "https://matoilic.ch/"
+  },
+  "description": "jquery.placeholder is a small jQuery-based pollyfill for the HTML5 placeholder attribute.",
+  "license": "MIT",
+  "main": "jquery.placeholder.js",
+  "readmeFilename": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.2.4"
+}
