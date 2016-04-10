@@ -1,0 +1,22 @@
+{
+  "name": "jquery.placeholder",
+  "description": "A polyfill for the placeholder attribute, that also patches $.fn.val properly.",
+  "version": "0.2.4",
+  "license": "MIT",
+  "main": [
+    "jquery.placeholder.js"
+  ],
+  "keywords": [
+    "placeholder",
+    "html5",
+    "polyfill"
+  ],
+  "ignore": [
+    "placeholder.jquery.json",
+    "spec",
+    "vendor"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  }
+}

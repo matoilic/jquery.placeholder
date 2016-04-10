@@ -1,0 +1,25 @@
+{
+  "name": "jquery.placeholder",
+  "version": "0.2.4",
+  "description": "jQuery-based polyfill for the HTML5 placeholder attribute that also patches $.fn.val properly.",
+  "main": "jquery.placeholder.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matoilic/jquery.placeholder.git"
+  },
+  "keywords": [
+    "jquery",
+    "html5",
+    "polyfill",
+    "placeholder"
+  ],
+  "author": "Mato Ilic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matoilic/jquery.placeholder/issues"
+  },
+  "homepage": "https://github.com/matoilic/jquery.placeholder#readme",
+  "dependencies": {
+    "jquery": ">=1.7"
+  }
+}

@@ -47,7 +47,7 @@ It supports all browsers that do not have native support for the placeholder att
 
 ## Licence ##
 
-Copyright &copy; 2013 Mato Ilic <<info@matoilic.ch>>
+Copyright &copy; 2016 Mato Ilic <<info@matoilic.ch>>
 
 jquery.placeholder is dual licensed under the MIT and GPL licenses:
 
